@@ -1,0 +1,3 @@
+# Langy
+
+Easy translation editor

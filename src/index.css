@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+    --font-momo-trust: "Momo Trust Display";
+    --font-roboto: "Roboto";
+}
+
+#root {
+    @apply w-screen h-screen relative bg-zinc-900 text-zinc-50
+}

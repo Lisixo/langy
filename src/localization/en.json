@@ -1,0 +1,30 @@
+{
+  "config": {
+    "category": {
+      "general": "General",
+      "ai": "Ai Integration"
+    },
+    "entry": {
+      "general": {
+        "accent": {
+          "title": "Accent Color",
+          "desc": "Change apperance of app"
+        }
+      },
+      "ai": {
+        "enabled": {
+          "title": "Enable AI Integration",
+          "desc": "Allows to use Ollama Models to help traslate parts of language"
+        },
+        "address": {
+          "title": "Ollama IP Address",
+          "desc": "IP Address that Ollama listens"
+        },
+        "port": {
+          "title": "Ollama IP Port",
+          "desc": "Port that Ollama listens"
+        }
+      }
+    }
+  }
+}

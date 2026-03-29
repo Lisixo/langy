@@ -10,7 +10,7 @@ export async function getDatabase() {
     upgrade(db, oldVersion, newVersion, transaction, event) {
       db.createObjectStore("config");
       db.createObjectStore("projects", {
-        keyPath: ['projectId']
+        keyPath: 'projectId'
       });
       const translationsStore = db.createObjectStore("translations", {
         keyPath: ['projectId', 'languageId', 'key']

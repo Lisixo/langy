@@ -5,9 +5,11 @@ interface SettingsState {
   entries: SettingsEntry[]
   values: Record<string, SettingsEntry['defaultValue']>
   disabledEntries: string[]
+  locked: boolean
   register(entry: SettingsEntry): void
   fetch(id: string): Promise<ConfigValue>
   set(id: string, value: SettingsEntry["defaultValue"]): Promise<void>
+  lock(): void
 }
 
 interface BaseEntry {
@@ -62,7 +64,13 @@ const useSettings = create<SettingsState>((set, get) => ({
   entries: [],
   values: {},
   disabledEntries: [],
+  locked: false,
+  lock: () => {
+    set({locked:true})
+  },
   register: async (se) => {
+    if(get().locked)
+      throw new Error(`Cannot register new entries. Settings are locked`)
     if(get().entries.find(e => e.id === se.id))
       throw new Error(`Entry '${se.id}' already registered`)
 

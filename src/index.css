@@ -1,13 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 @import "tailwindcss";
+
+:root {
+  --color-accent: transparent;
+  --color-accent-light: color-mix(in srgb, var(--color-accent), white 20%);
+  --color-accent-dark: color-mix(in srgb, var(--color-accent), black 20%);
+  --color-accent-bg-common: color-mix(in srgb, oklch(21% 0.006 285.885), var(--color-accent) 2%);
+  --color-accent-bg-light: color-mix(in srgb, oklch(21% 0.006 285.885), color-mix(in srgb, white, var(--color-accent) 80%) 5%);
+}
 
 @theme {
   --font-momo-trust: "Momo Trust Display";
   --font-roboto: "Roboto";
-  --color-accent: transparent;
+  --font-inter: "Inter", sans-serif;
+  --color-accent: var(--color-accent);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-accent-bg-common: var(--color-accent-bg-common);
+  --color-accent-bg-light: var(--color-accent-bg-light);
+}
+
+body {
+  @apply text-zinc-50 font-inter
 }
 
 #root {
-  @apply w-screen h-screen relative bg-zinc-900 text-zinc-50;
+  @apply w-screen h-screen relative text-zinc-50 bg-accent-bg-common overflow-hidden;
+  /* @apply bg-zinc-900; */
 }

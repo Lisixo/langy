@@ -109,7 +109,8 @@ const useSettings = create<SettingsState>((set, get) => ({
     const prevValue = await db.get('config', entry.id)
 
     set(prev => {
-      const { entries, values } = get()
+      const { entries, values } = prev
+
       entries.filter(e => {
         if(!e.dependsOn || e.dependsOn.length === 0) return false
 
@@ -117,7 +118,7 @@ const useSettings = create<SettingsState>((set, get) => ({
       })
 
       return ({
-        values: {...prev.values, [entry.id]: value}
+        values: {...prev.values, [entry.id]: value},
       })
     })
     await db.put('config', value, entry.id)

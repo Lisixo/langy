@@ -1,5 +1,6 @@
 import { IconChevronLeft } from "@tabler/icons-react";
 import type { ErrorResponse } from "react-router";
+import join from "./utils/join";
 
 export function NotFoundErrorPage() {
   return (
@@ -18,11 +19,25 @@ export function NotFoundErrorPage() {
   );
 }
 
-export function CrashErrorPage({ error }: { error: ErrorResponse }) {
+export function CrashErrorPage({ error }: { error: Error }) {
   return (
-    <main className="flex flex-col h-screen justify-center items-center gap-8">
+    <main className="flex flex-col min-h-full justify-center items-center gap-8">
       <h1 className="text-6xl font-bold">Opsssss...</h1>
       <p className="text-xl">App crashed</p>
+
+      {
+        error && (
+          <div className="p-4 overflow-auto h-full w-full">
+            <div className="rounded-md border-2 border-zinc-800 bg-zinc-950 p-4 font-mono flex flex-col gap-2 wrap-break-word overflow-auto h-full w-full">
+              {
+                error.stack 
+                ? error.stack?.split('\n').map(el => <span className={join('text-sm', el.trim().startsWith('at ') && 'pl-8')}>{el}</span>)
+                : <span>[{error.name}] {error.message}</span>
+              }
+            </div>
+          </div>
+        )
+      }
     </main>
   );
 }

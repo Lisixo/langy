@@ -22,6 +22,7 @@ interface SettingsState {
   removeFromMemory(projectId: string): Promise<void>
   refresh(): Promise<void>
   fetchProjectList(): Promise<Project[]>
+  close(): Promise<void>
 }
 
 const useProject = create<SettingsState>((set, get) => ({
@@ -105,7 +106,10 @@ const useProject = create<SettingsState>((set, get) => ({
 
     set({ projectListCache: list })
     return list
-  }
+  },
+  close: async () => {
+    set({ project: null, projectId: null })
+  },
 }))
 
 export default useProject

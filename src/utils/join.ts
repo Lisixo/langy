@@ -3,8 +3,8 @@ export default function join(
 ) {
   return txt
     .filter((e) => e)
-    .join()
-    .trim();
+    .map(e => typeof e === 'string' ? e.trim() : e)
+    .join(' ');
 }
 export function joinLang(...txt: string[]) {
   return txt

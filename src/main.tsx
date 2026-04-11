@@ -1,11 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import "./modules/localization";
+import "@/index.css";
+import "@/modules/localization";
 import { createBrowserRouter, RouterProvider } from "react-router";
-import Root, { RootErrorBoundary } from "./root";
-import HomePage from "./pages/home";
-import SettingsPage from "./pages/settings";
+import Root, { RootErrorBoundary } from "@/root";
+import SettingsPage from "@/pages/settings";
+import HomePrePage from "@/pages/home";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: HomePage,
+        Component: HomePrePage,
       },
       {
         path: "editor",
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
 ]);
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
+  // <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
+  // </StrictMode>,
 );

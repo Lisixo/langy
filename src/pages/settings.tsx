@@ -3,11 +3,12 @@ import { useTranslation } from "react-i18next";
 import { joinLang } from "../utils/join";
 import { IconCheck } from "@tabler/icons-react";
 import useSettings, { type ColorDefinition, type SettingsEntry } from "../hooks/useSettings";
+import { Switch } from "@/components/ui/switch";
 
 export default function SettingsPage() {
   const { entries } = useSettings()
 
-  const categories = useMemo(() => [...new Set(entries.map(e => e.category))], [entries])
+  const categories = useMemo(() => [...new Set(entries.filter(e => e.visibility !== 'hidden').map(e => e.category))], [entries])
 
   return (
     <div className="relative flex flex-col gap-4">
@@ -65,7 +66,7 @@ function SettingEntry({ config }: { config: SettingsEntry }) {
         </div>
         <div className="flex flex-col justify-center items-center">
           {config.type === "checkbox" ? (
-            <Checkbox
+            <Switch
               value={value as boolean}
               onChange={setValue}
               disabled={shouldBeDisabled}
@@ -86,37 +87,6 @@ function SettingEntry({ config }: { config: SettingsEntry }) {
           onChange={setValue}
         />
       )}
-    </div>
-  );
-}
-
-function Checkbox({
-  value,
-  size = 24,
-  disabled,
-  onChange,
-}: {
-  value: boolean;
-  disabled?: boolean;
-  size?: number;
-  onChange: (state: boolean) => void;
-}) {
-  const padding = 4;
-  return (
-    <div
-      className={`rounded-full transition-colors ${disabled ? "cursor-auto" : "cursor-pointer"} ${disabled ? "bg-accent/30" : value ? "bg-accent outline-accent" : "bg-zinc-800 outline-zinc-700"} outline `}
-      style={{ height: size, width: size * 2 }}
-      onClick={() => !disabled && onChange(!value)}
-    >
-      <div
-        className={`h-full bg-white rounded-full transition-transform`}
-        style={{
-          height: size - padding * 2,
-          width: size - padding * 2,
-          margin: padding,
-          transform: value ? `translateX(${size}px)` : undefined,
-        }}
-      ></div>
     </div>
   );
 }

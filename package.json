@@ -10,14 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@floating-ui/react": "^0.27.19",
     "@tabler/icons-react": "^3.35.0",
     "@tailwindcss/vite": "^4.1.17",
+    "chart.js": "^4.5.1",
     "i18next": "^25.6.3",
     "idb": "^8.0.3",
     "motion": "^12.23.24",
     "ollama": "^0.6.3",
     "papaparse": "^5.5.3",
     "react": "^19.2.0",
+    "react-chartjs-2": "^5.3.1",
     "react-dom": "^19.2.0",
     "react-i18next": "^16.3.5",
     "react-router": "^7.9.5",

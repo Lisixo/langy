@@ -2,9 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Flex } from "@/components/ui/container";
 import { Tab } from "@/components/ui/tab";
 import useProject from "@/hooks/useProject";
-import { useEffect, useState } from "react";
-import lang from "@/assets/languages.json"
-import { t } from "i18next";
+import { useState } from "react";
 
 export default function ProjectManagerPage() {
   const [currentTab, setCurrentTab] = useState('')
@@ -33,12 +31,6 @@ export default function ProjectManagerPage() {
             Close
           </Button>
         </Flex>
-      </Flex>
-
-      <Flex direction="col">
-        {
-          lang.codes.map(c => <div key={c}>{t(`language.${c}._`)}</div>)
-        }
       </Flex>
     </Flex>
   );

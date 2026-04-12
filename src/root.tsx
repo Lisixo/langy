@@ -1,6 +1,4 @@
 import {
-  IconEditCircle,
-  IconFiles,
   IconFolders,
   IconHome,
   IconRobotFace,
@@ -21,7 +19,6 @@ import { loaderManager } from "./modules/loader/manager";
 import CSVImporter from "./modules/importers/csv";
 import join from "./utils/join";
 import useProject from "./hooks/useProject";
-import { Button } from "./components/ui/button";
 
 export default function Root() {
   const [readyState, setReadyState] = useState<'preparing' | 'ready' | 'fail'>('preparing')
@@ -48,7 +45,7 @@ export default function Root() {
               },
               {
                 key: 'cyan',
-                color: 'oklch(70.4% 0.14 182.503)'
+                color: 'oklch(60.9% 0.126 221.723)'
               },
               {
                 key: 'green',
@@ -60,7 +57,11 @@ export default function Root() {
               },
               {
                 key: 'rose',
-                color: 'oklch(71.2% 0.194 13.428)'
+                color: 'oklch(58.6% 0.253 17.585)'
+              },
+              {
+                key: 'fushia',
+                color: 'oklch(51.8% 0.253 323.949)'
               },
             ],
             defaultValue: 'violet',
@@ -70,7 +71,7 @@ export default function Root() {
               )!.color;
               document.documentElement.style.setProperty("--color-accent", accent);
             }
-          } satisfies SelectColorEntry<'violet' | 'cyan' | 'orange' | 'green' | 'rose'>)
+          } satisfies SelectColorEntry<'violet' | 'cyan' | 'orange' | 'green' | 'rose' | 'fushia'>)
           await settings.register({
             id: 'ai.enabled',
             category: 'ai',
@@ -107,7 +108,12 @@ export default function Root() {
 
       }
       catch(e) {
-        console.error("Failed to init app")
+        if(import.meta.env.DEV && (e as Error).message.includes("already registered")) {
+          console.warn("Error below was captured and ignored in development mode (propably false posivite from StrictMode)")
+          console.warn(e)
+          return
+        }
+
         console.error(e)
         setReadyState('fail')
       } 
@@ -182,7 +188,7 @@ function NavigationButton({ href, children, disabled }: NavigationButtonProps) {
       className={({ isActive }) =>
         join(
           `h-full flex p-2 items-center transition-colors`,
-          isActive ? "bg-accent" : disabled ? 'cursor-not-allowed hover:bg-zinc-700/30' : "hover:bg-accent/30 bg-zinc-700/30"
+          isActive ? "bg-accent" : disabled ? 'cursor-not-allowed opacity-30' : "hover:bg-accent/20"
         )
       }
     >

@@ -16,7 +16,7 @@ export function Input({
   ...rest
 }: Omit<InputHTMLAttributes<HTMLInputElement>, "onChange"> & InputProps
 ) {
-  const [innerValue, setInnerValue] = useState(value)
+  const [innerValue, setInnerValue] = useState(value ?? "")
   const errors = useMemo(() => (
     _.uniq(
       (validators ?? [])
@@ -62,7 +62,7 @@ export function Input({
 }
 
 interface InputProps {
-  value: string
+  value?: string
   onChange?: (state: string) => void
   validators?: z.ZodTypeAny[]
 }

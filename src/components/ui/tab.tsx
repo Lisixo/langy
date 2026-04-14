@@ -1,8 +1,7 @@
 import join from '@/utils/join'
 import * as React from 'react'
-import { createContext, useContext, useState, useCallback, useEffect, useMemo } from 'react'
+import { createContext, useContext, useState, useEffect, useMemo } from 'react'
 
-// --- Context Definition ---
 interface TabContext {
   current: string
   elements: string[]
@@ -11,7 +10,6 @@ interface TabContext {
   set(id: string): void
 }
 
-// Initial state for the context
 const initialContextValue: TabContext = {
   current: "",
   elements: [],
@@ -84,10 +82,9 @@ function TabElement({ id,  children }: ElementProps) {
 
   const isActive = useMemo(() => contextValue.current === id, [contextValue.current])
 
-  // Element displays nothing visually, but it manages state in the context
   return (
     <div 
-      className={join('text-center p-1 px-3 rounded-md cursor-pointer select-none', isActive ? 'bg-accent/40': 'hover:outline-2 hover:outline-accent/30')}
+      className={join('text-center p-1 px-3 rounded-md cursor-pointer select-none outline-transparent transition-[outline,background]', isActive ? 'bg-accent/40': 'hover:outline-2 hover:outline-accent/30')}
       onClick={() => contextValue.set(id)}
     >
       {children}

@@ -26,14 +26,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          # cache: 'pnpm'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
             version: 10
             cache: true
-            run_install: true
+            run_install: false
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

@@ -9,7 +9,7 @@ export function Button({
 ) {
   return (
     <button
-      className={join("p-2 rounded-md border font-bold cursor-pointer disabled:cursor-not-allowed disabled:bg-neutral-900/60 disabled:border-neutral-900 transition-colors", className, 
+      className={join("p-2 rounded-md border font-bold cursor-pointer disabled:cursor-not-allowed disabled:bg-neutral-700/60 disabled:border-neutral-700 transition-colors", className, 
         variant === 'primary'
         ? 'bg-accent/60 hover:bg-accent/80 border-accent'
         : variant === 'success'
@@ -29,6 +29,4 @@ export function Button({
 
 interface ButtonProps {
   variant?: 'primary' | 'success' | 'info' | 'warning' | 'danger'
-  // onChange?: (state: string) => void
-  // label?: string
 }

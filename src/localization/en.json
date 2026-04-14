@@ -31,7 +31,15 @@
     "file": {
       "simple": "Simple",
       "streamed": "Streaming"
-    }
+    },
+    "modal": {
+      "confirm": {
+        "title": "Are you sure?",
+        "desc": "This action is irreversible!"
+      }
+    },
+    "confirm": "Confirm",
+    "cancel": "Cancel"
   },
   "file": {
     "csv": "CSV"

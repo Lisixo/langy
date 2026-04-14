@@ -27,16 +27,16 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
-  
+
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
         with:
             version: 10
             cache: true
-            run_install: false
+            run_install: true
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfilepnpm install --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Run Typecheck
         run: pnpm exec tsc --noEmit

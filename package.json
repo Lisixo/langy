@@ -16,6 +16,7 @@
     "chart.js": "^4.5.1",
     "i18next": "^25.6.3",
     "idb": "^8.0.3",
+    "lodash": "^4.18.1",
     "motion": "^12.23.24",
     "ollama": "^0.6.3",
     "papaparse": "^5.5.3",
@@ -26,10 +27,12 @@
     "react-router": "^7.9.5",
     "tailwindcss": "^4.1.17",
     "uuid": "^13.0.0",
+    "zod": "^4.3.6",
     "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
+    "@types/lodash": "^4.17.24",
     "@types/node": "^24.10.0",
     "@types/papaparse": "^5.5.2",
     "@types/react": "^19.2.2",

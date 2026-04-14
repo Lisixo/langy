@@ -4,6 +4,9 @@ import { joinLang } from "../utils/join";
 import { IconCheck } from "@tabler/icons-react";
 import useSettings, { type ColorDefinition, type SettingsEntry } from "../hooks/useSettings";
 import { Switch } from "@/components/ui/switch";
+import { Flex } from "@/components/ui/container";
+import { Input } from "@/components/ui/input";
+import z from "zod"
 
 export default function SettingsPage() {
   const { entries } = useSettings()
@@ -32,12 +35,12 @@ function SettingsCategoryCard({ category }: { category: string }) {
           {t(joinLang("config.category", category))}
         </h1>
       </div>
-      <div className="flex flex-col gap-4">
+      <Flex col gap={4}>
         {categoryEntries
           .map((cfg) => (
             <SettingEntry key={cfg.id} config={cfg} />
           ))}
-      </div>
+      </Flex>
     </div>
   );
 }
@@ -72,10 +75,11 @@ function SettingEntry({ config }: { config: SettingsEntry }) {
               disabled={shouldBeDisabled}
             />
           ) : config.type === "input" ? (
-            <TextInput
+            <Input
               value={value as string}
               onChange={setValue}
               disabled={shouldBeDisabled}
+              validators={[z.union([z.ipv4({ error: "validate.ip.invalid" }), z.ipv6({ error: "validate.ip.invalid" })])]}
             />
           ) : null}
         </div>
@@ -118,29 +122,6 @@ function ColorSelect({
           {value === entry.key && <IconCheck size={size - 8} />}
         </div>
       ))}
-    </div>
-  );
-}
-
-function TextInput({
-  value,
-  size = 24,
-  onChange,
-  disabled,
-}: {
-  value: string;
-  size?: number;
-  onChange: (state: string) => void;
-  disabled?: boolean;
-}) {
-  return (
-    <div className="flex flex-wrap gap-4">
-      <input
-        className="w-full p-2 rounded-md border-2 border-accent bg-accent/10 outline-none transition-colors disabled:bg-zinc-800/10 disabled:border-zinc-800 disabled:opacity-50"
-        disabled={disabled}
-        value={value}
-        onChange={(ev) => onChange(ev.target.value)}
-      />
     </div>
   );
 }

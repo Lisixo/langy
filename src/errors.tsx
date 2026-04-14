@@ -1,5 +1,4 @@
 import { IconChevronLeft } from "@tabler/icons-react";
-import type { ErrorResponse } from "react-router";
 import join from "./utils/join";
 
 export function NotFoundErrorPage() {

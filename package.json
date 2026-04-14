@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
+  "packageManager": "pnpm@10.33.0",
   "dependencies": {
     "@floating-ui/react": "^0.27.19",
     "@tabler/icons-react": "^3.35.0",
@@ -37,14 +38,13 @@
     "@types/papaparse": "^5.5.2",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.2",
-    "@vitejs/plugin-react-swc": "^4.2.1",
-    "eslint": "^9.39.1",
+    "@vitejs/plugin-react-oxc": "^0.4.3",
+    "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^7.0.1",
-    "eslint-plugin-react-refresh": "^0.4.24",
-    "globals": "^16.5.0",
-    "typescript": "~5.9.3",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.5.0",
+    "typescript": "~6.0.2",
     "typescript-eslint": "^8.46.3",
-    "vite": "^7.2.2",
-    "vite-tsconfig-paths": "^6.1.1"
+    "vite": "8.0.8"
   }
 }
